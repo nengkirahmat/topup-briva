@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\User;
 use App\Models\TopUp;
 use App\Models\Product;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -36,7 +38,7 @@ class HomeController extends Controller
 
     public function getHistory()
     {
-        $history = TopUp::where('no_va', auth()->user()->customer->no_va)->orderBy('created_at', 'DESC')->limit(5)->get();
+        $history = TopUp::where('customer_id', auth()->user()->customer->id)->orderBy('created_at', 'DESC')->limit(5)->get();
         $data = '';
         if (!empty($history)) {
 
@@ -60,5 +62,21 @@ class HomeController extends Controller
             }
         }
         return $data;
+    }
+
+    public function updateUser(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'password1'=>'',
+            'password2'=>'same:password1'
+        ]);
+
+        $user=User::find(auth()->user()->id);
+        $user->name=$request->name;
+        if(!empty($request->password1) and !empty($request->password2)){
+            $user->password=Hash::make($request->password1);
+        }
+        $user->save();
+        return redirect()->back();
     }
 }

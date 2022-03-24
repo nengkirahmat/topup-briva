@@ -114,6 +114,53 @@
         <!-- * Deposit Action Sheet -->
 
 
+        <div class="modal fade action-sheet" id="settingActionSheet" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Setting</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+                            <form id="form-setting" action="{{route('update-user')}}" method="post">
+                                @csrf
+                                <div class="form-group basic">
+                                    <label class="label">Nama Lengkap</label>
+                                    <div class="input-group mb-2">
+                                        <input type="text" class="form-control" name="name" id="name" value="{{auth()->user()->name}}"
+                                            placeholder="Your Name">
+                                    </div>
+                                </div>
+                                <div class="divider">
+                                    <span class="text-info">Kosongkan Jika Tidak Merubah Password</span>
+                                </div>
+                                <div class="form-group basic">
+                                    <label class="label">New Password</label>
+                                    <div class="input-group mb-2">
+                                        <input type="password" class="form-control" name="password1" id="password1"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group basic">
+                                    <label class="label">Retype Password</label>
+                                    <div class="input-group mb-2">
+                                        <input type="password" class="form-control" name="password2" id="password2"
+                                            placeholder="Retype Password">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group basic">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg"
+                                        data-bs-dismiss="modal" id="updateUser">Update</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Value Topup -->
         <div class="section">
             <div class="row mt-2">
@@ -168,7 +215,7 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-        <a href="javascript:void(0);" class="item">
+        <a href="javascript:void(0);" class="item" data-bs-toggle="modal" data-bs-target="#settingActionSheet">
             <div class="col">
                 <ion-icon name="settings-outline"></ion-icon>
                 <strong>Settings</strong>

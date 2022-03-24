@@ -33,7 +33,7 @@ class TopUpController extends Controller
      */
     public function store(Request $request)
     {
-        $cekTopup=TopUp::where('status_bayar',0)->where('expired_date','>',date('Y-m-d H:i:s'))->count();
+        $cekTopup=TopUp::where('no_va',auth()->user()->customer->no_va)->where('status_bayar',0)->where('expired_date','>',date('Y-m-d H:i:s'))->count();
         if($cekTopup>0){
             $response = [
                 'success' => false,

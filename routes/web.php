@@ -15,12 +15,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
+Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
     Route::post('/topup', [App\Http\Controllers\TopUpController::class, 'store'])->name('topup');
     Route::get('/get-history', [App\Http\Controllers\HomeController::class, 'getHistory'])->name('list-history');
+    Route::post('/update-user', [App\Http\Controllers\HomeController::class, 'updateUser'])->name('update-user');
 });
 
