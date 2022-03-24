@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class BrivaController extends Controller
 {
-    var $clientID     = "rEp0LXvlDQHrF2xIurqrGnBHeynf3r99";
-	var $clientSecret = "AbRnMbafCREttXBf";
+    var $clientID     = "";
+	var $clientSecret = "";
 	var $endpoint     = "https://sandbox.partner.api.bri.co.id/oauth/client_credential/accesstoken?grant_type=client_credentials";
 	var $institutionCode = "J104408"; //This institution code will be given by BRI
 	var $brivaNo = "77777"; // BRIVA number unique to your institution
