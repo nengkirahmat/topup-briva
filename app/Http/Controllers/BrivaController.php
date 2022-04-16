@@ -118,7 +118,7 @@ class BrivaController extends Controller
 
 		$urlPost ="https://sandbox.partner.api.bri.co.id/v1/briva";
 		$resultPost = $this->curlHeader($urlPost,$payload,$datas,$path,$verb);
-		// echo $resultPost;
+		echo $resultPost;
 		return json_decode($resultPost, true);
 	}
 
