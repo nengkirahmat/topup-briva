@@ -9,8 +9,8 @@ class BrivaController extends Controller
     var $clientID     = "";
 	var $clientSecret = "";
 	var $endpoint     = "https://sandbox.partner.api.bri.co.id/oauth/client_credential/accesstoken?grant_type=client_credentials";
-	var $institutionCode = "J104408"; //This institution code will be given by BRI
-	var $brivaNo = "77777"; // BRIVA number unique to your institution
+	var $institutionCode = ""; //This institution code will be given by BRI
+	var $brivaNo = ""; // BRIVA number unique to your institution
 	var $expiredDate = "2021-03-27 23:59:00"; //static
 
 	
